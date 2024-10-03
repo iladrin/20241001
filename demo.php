@@ -23,7 +23,7 @@ class Logger
 {
 
     public function __construct(
-        private Registry $registry
+        private readonly Registry $registry
     )
     {
         $this->registry->register($this);
