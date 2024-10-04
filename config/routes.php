@@ -2,15 +2,15 @@
 
 return [
     'homepage' => [
-        'controller' => 'homepage',
+        'controller' => \App\Controller\HomepageController::class,
         'methods' => 'GET',
     ],
-    'about' => [
-        'controller' => 'about',
-        'methods' => 'GET',
-    ],
-    'user' => [
-        'controller' => 'user/show',
-        'methods' => 'GET',
-    ],
+//    'about' => [
+//        'controller' => \App\Controller\AboutController::class,
+//        'methods' => 'GET',
+//    ],
+//    'user' => [
+//        'controller' => \App\Controller\User\ShowController::class,
+//        'methods' => 'GET',
+//    ],
 ];

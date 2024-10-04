@@ -1,3 +1,0 @@
-<?php
-
-forward('homepage', $requestStack);

@@ -1,4 +1,9 @@
 <?php
+
+use App\Logger\Logger;
+
+require __DIR__ . '/../vendor/autoload.php';
+
 require __DIR__ . '/../routing/redirect.php';
 
 
@@ -22,10 +27,19 @@ do {
 
 //    var_dump("Dispatching page $currentRequest");
 
-    $controller = $routes[$currentRequest]['controller'];
-    require __DIR__ . "/../controllers/$controller.php";
+    $controllerClassName = $routes[$currentRequest]['controller'];
+    $controller = new $controllerClassName();
+
+    if (!$controller instanceof \App\Controller\AbstractController) {
+        throw new Exception('Incompatible controller class');
+    }
+
+    $controller->setLogger(new Logger(__DIR__ . '/../logs/log.txt'));
+    $controller();
+
+//    require __DIR__ . "/../controllers/$controller.php";
 
 } while (!empty($requestStack));
 
 // On affiche quelque chose à l’utilisateur 😄
-require __DIR__ . "/../templates/$controller.php";
+//require __DIR__ . "/../templates/$controller.php";
